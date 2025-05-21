@@ -4,7 +4,7 @@ import 'package:interprete/tokens.dart';
 import 'ast.dart';
 import 'lexer.dart';
 
-final Map<TokenType, int> PRECEDENCES = {
+final Map<TokenType, int> precedences = {
   TokenType.EQ: 2,
   TokenType.NOT_EQ: 2,
   TokenType.LT: 2,
@@ -149,11 +149,11 @@ class Parser {
   }
 
   int _peekPrecedence() {
-    return PRECEDENCES[peekToken?.type] ?? 0;
+    return precedences[peekToken?.type] ?? 0;
   }
 
   int _currentPrecedence() {
-    return PRECEDENCES[currentToken?.type] ?? 0;
+    return precedences[currentToken?.type] ?? 0;
   }
 
   bool _expectPeek(TokenType ttype) {
@@ -359,6 +359,7 @@ class Parser {
         args.add(expr);
       }
     }
+
 
     if (!_expectPeek(endTokenType)) {
       return [];

@@ -73,5 +73,6 @@ TokenType lookupTokenType(String literal) {
     'function': TokenType.FUNCTION,
   };
 
+
   return keywords[literal] ?? TokenType.IDENT;
 }
