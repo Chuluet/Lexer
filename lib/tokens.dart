@@ -36,7 +36,8 @@ enum TokenType {
   LE,           // <=
   GE,           // >=
   SEMICOLON,    // ;
-  COLON,        // :
+  COLON,
+  FUNCTION,         // :
 }
 
 class Token {
@@ -69,7 +70,10 @@ TokenType lookupTokenType(String literal) {
     'return': TokenType.RETURN,
     'yamete': TokenType.BREAK,
     'continue': TokenType.CONTINUE,
+    'function': TokenType.FUNCTION,
   };
+
+
 
   return keywords[literal] ?? TokenType.IDENT;
 }

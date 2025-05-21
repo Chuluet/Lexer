@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:interprete/lexer.dart';
-import 'package:interprete/tokens.dart';
+
+import 'tokens.dart';
 
 import 'lexer.dart';
 
@@ -19,6 +19,7 @@ void startRepl() {
         break;
       }
 
+
       Lexer lexer = Lexer(source);
       Token token;
 
@@ -30,4 +31,5 @@ void startRepl() {
       print("Runtime Error: $e");
     }
   }
+
 }
