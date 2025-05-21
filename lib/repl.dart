@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:interprete/lexer.dart';
-import 'package:interprete/tokens.dart';
+
+import 'tokens.dart';
 
 import 'lexer.dart';
 
