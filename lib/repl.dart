@@ -19,6 +19,7 @@ void startRepl() {
         break;
       }
 
+
       Lexer lexer = Lexer(source);
       Token token;
 

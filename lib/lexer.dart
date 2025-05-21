@@ -8,6 +8,7 @@ class Lexer {
 
   Lexer(this.source) {
     readChar();
+
   }
 
   Token nextToken() {
