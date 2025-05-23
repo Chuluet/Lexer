@@ -12,7 +12,7 @@ enum TokenType {
   IDENT,        // nombre de variable o función
   ILLEGAL,      // algo que no entendemos
   INT,          // número entero
-  DOUBLE,       // número decimal                                               ESTO NO JALA
+  DOUBLE,       // número decimal
   BOOL,         // tipo bool
   STRING,       // tipo String
   VAR,          // var
@@ -68,7 +68,7 @@ TokenType lookupTokenType(String literal) {
     'for': TokenType.FOR,
     'while': TokenType.WHILE,
     'return': TokenType.RETURN,
-    'yamete': TokenType.BREAK,
+    'break': TokenType.BREAK,
     'continue': TokenType.CONTINUE,
     'function': TokenType.FUNCTION,
   };
