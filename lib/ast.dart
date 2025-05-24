@@ -52,6 +52,50 @@ class ExpressionStatement extends Statement {
   @override
   String toString() => expression.toString();
 }
+class WhileStatement extends Statement {
+  final Token token; // token WHILE
+  final Expression condition;
+  final BlockStatement body;
+
+  WhileStatement(this.token, this.condition, this.body);
+
+  @override
+  String tokenLiteral() => token.literal;
+
+  @override
+  String toString() => 'while (${condition.toString()}) ${body.toString()}';
+}
+
+class ForStatement extends Statement {
+  final Token token; // token FOR
+  final Statement? init;
+  final Expression? condition;
+  final Statement? post;
+  final BlockStatement body;
+
+  ForStatement(this.token, this.init, this.condition, this.post, this.body);
+
+  @override
+  String tokenLiteral() => token.literal;
+
+  @override
+  String toString() =>
+      'for (${init?.toString() ?? ''}; ${condition?.toString() ?? ''}; ${post?.toString() ?? ''}) ${body.toString()}';
+}
+
+class AssignStatement extends Statement {
+  final Token token; // token ASSIGN '='
+  final Identifier name;
+  final Expression value;
+
+  AssignStatement(this.token, this.name, this.value);
+
+  @override
+  String tokenLiteral() => token.literal;
+
+  @override
+  String toString() => '${name.toString()} = ${value.toString()};';
+}
 
 // ========== EXPRESSIONS ==========
 
@@ -145,50 +189,6 @@ class BlockStatement extends Expression {
   String toString() => '{ ${statements.map((s) => s.toString()).join(' ')} }';
 }
 
-class WhileStatement extends Statement {
-  final Token token; // token WHILE
-  final Expression condition;
-  final BlockStatement body;
-
-  WhileStatement(this.token, this.condition, this.body);
-
-  @override
-  String tokenLiteral() => token.literal;
-
-  @override
-  String toString() => 'while (${condition.toString()}) ${body.toString()}';
-}
-
-class ForStatement extends Statement {
-  final Token token; // token FOR
-  final Statement? init;
-  final Expression? condition;
-  final Statement? post;
-  final BlockStatement body;
-
-  ForStatement(this.token, this.init, this.condition, this.post, this.body);
-
-  @override
-  String tokenLiteral() => token.literal;
-
-  @override
-  String toString() =>
-      'for (${init?.toString() ?? ''}; ${condition?.toString() ?? ''}; ${post?.toString() ?? ''}) ${body.toString()}';
-}
-
-class AssignStatement extends Statement {
-  final Token token; // token ASSIGN '='
-  final Identifier name;
-  final Expression value;
-
-  AssignStatement(this.token, this.name, this.value);
-
-  @override
-  String tokenLiteral() => token.literal;
-
-  @override
-  String toString() => '${name.toString()} = ${value.toString()};';
-}
 
 class FunctionLiteral extends Expression {
   final Token token; // token FUNCTION, VAR, etc.

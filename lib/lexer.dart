@@ -39,7 +39,6 @@ class Lexer {
         token = Token(TokenType.LE, '$ch$character');
       } else {
         token = Token(TokenType.LT, character);
-        token = Token(TokenType.LT, character);
       }
     } else if (character == '>') {
       if (_peekCharacter() == '=') {

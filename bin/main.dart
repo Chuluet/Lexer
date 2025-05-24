@@ -1,23 +1,28 @@
-import 'package:interprete/lexer.dart';
-import 'package:interprete/parser.dart';
+import 'dart:io';
 
+import 'package:interprete/parser.dart';
+import 'package:interprete/lexer.dart';
+import 'package:interprete/evaluator.dart';
 
 void main() {
-  final input = 'if (x == 1) { y = 2; } else { if (x == 2) { y = 3; } }';
+  try {
+    final source = File('Lexer/ejemplo.chuleta').readAsStringSync();
 
-  final lexer = Lexer(input);
-  final parser = Parser(lexer);
-  final program = parser.parseProgram();
+    final lexer = Lexer(source);
+    final parser = Parser(lexer);
+    final program = parser.parseProgram();
 
-  if (parser.errors.isNotEmpty) {
-    print("Errores de parsing:");
-    for (final error in parser.errors) {
-      print(error);
+    if (parser.errors.isNotEmpty) {
+      print('Errores de parseo:');
+      for (final err in parser.errors) {
+        print('  ✖ $err');
+      }
+    } else {
+      evalNode(program); // Evalúa el programa y muestra resultados si corresponde
     }
-    return;
+  } on FileSystemException catch (e) {
+    print('Error al leer el archivo: ${e.message}');
+  } catch (e) {
+    print('Error durante la ejecución: $e');
   }
-
-  print("AST generado:");
-  print(program.toString());
-
 }
